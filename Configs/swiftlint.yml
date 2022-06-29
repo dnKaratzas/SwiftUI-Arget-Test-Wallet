@@ -95,9 +95,6 @@ implicitly_unwrapped_optional:
 trailing_comma:
   mandatory_comma: true
 
-switch_case_alignment:
-  indented_cases: true
-
 identifier_name:
   min_length: 0
   max_length: 200

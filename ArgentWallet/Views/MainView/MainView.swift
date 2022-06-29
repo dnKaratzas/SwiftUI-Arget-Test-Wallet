@@ -6,11 +6,27 @@
 //
 
 import SwiftUI
+import Resolver
+import SimpleToast
 
 struct MainView: View {
+    @ObservedObject private var viewModel: MainViewModel = Resolver.resolve()
+
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        AsyncContentView(state: $viewModel.state) {
+            NavigationView {
+                ZStack {
+                    BackgroundView()
+                    VStack {
+                        Text(viewModel.balance)
+                        Spacer()
+                    }
+                }
+            }
+        }
+        .onAppear {
+            viewModel.fetchAccountBalance()
+        }
     }
 }
 
