@@ -19,6 +19,8 @@ disabled_rules:
   - pattern_matching_keywords
   - type_contents_order
   - nesting
+  - lower_acl_than_parent
+  - function_default_parameter_at_end
 
 opt_in_rules:
   - force_unwrapping
@@ -46,7 +48,6 @@ opt_in_rules:
   - file_name_no_space
   - first_where
   - flatmap_over_map_reduce
-  - function_default_parameter_at_end
   - identical_operands
   - implicitly_unwrapped_optional
   - joined_default_parameter
@@ -54,7 +55,6 @@ opt_in_rules:
   - legacy_multiple
   - legacy_random
   - literal_expression_end_indentation
-  - lower_acl_than_parent
   - modifier_order
   - multiline_literal_brackets
   - nimble_operator

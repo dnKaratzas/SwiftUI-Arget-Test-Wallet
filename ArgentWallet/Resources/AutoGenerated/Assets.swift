@@ -34,6 +34,7 @@ internal enum WalletColor {
 }
 
 internal enum WalletImage {
+	public static let EthLogo = Image("EthLogo")
 }
 
 private final class BundleToken {}

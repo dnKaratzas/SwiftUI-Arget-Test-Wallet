@@ -5,14 +5,17 @@
 //  Created by Dionisis Karatzas on 29/6/22.
 //
 
+import BigInt
 import Foundation
 import web3
 
 protocol WalletServiceProtocol {
     /// Returns the ETH balance, formatted to 2 decimals
-    func fetchBalance(for address: EthereumAddress, completion: @MainActor @escaping (Result<String, Error>) -> Void)
+    func fetchBalance(for address: EthereumAddress, completion: @escaping (Result<String, Error>) -> Void)
     /// Returns a list of all received ERC20 transfers for the Argent wallet.
-    func fetchERC20InboundTransfers() async throws
+    func sendEth(walletAddress: EthereumAddress, tokenAddress: EthereumAddress, toAddress: EthereumAddress, account: EthereumAccountProtocol, amount: String, completion: @escaping (Result<String, Error>) -> Void)
+
+    func fetchTransactionReceipt(for txHash: String, completion: @escaping (Result<EthereumTransactionReceipt, Error>) -> Void)
 }
 
 struct WalletService: WalletServiceProtocol {
@@ -24,22 +27,44 @@ struct WalletService: WalletServiceProtocol {
         self.etherscanRepository = etherscanRepository
     }
 
-    func fetchBalance(for address: EthereumAddress, completion: @MainActor @escaping (Result<String, Error>) -> Void) {
+    func fetchBalance(for address: EthereumAddress, completion: @escaping (Result<String, Error>) -> Void) {
         Task {
             do {
                 let balance = try await web3Repository.fetchBalance(for: address)
 
-                guard let balanceStr = Web3.Utils.formatToEthereumUnits(balance, toUnits: .eth) else {
-                    await completion(.failure("Failed to formatToEthereumUnits balance: \(balance)"))
+                guard let balanceStr = Web3.Utils.formatToEthereumUnits(balance, toUnits: .eth),
+                      let balanceDouble = Double(balanceStr)?.rounded(2) else {
+                    completion(.failure("Failed to formatToEthereumUnits balance: \(balance)"))
                     return
                 }
-                await completion(.success(balanceStr))
+                completion(.success(String(balanceDouble)))
             } catch {
-                await completion(.failure("\(error)"))
+                completion(.failure("\(error)"))
             }
         }
     }
-    
-    func fetchERC20InboundTransfers() async throws {
+
+    func sendEth(walletAddress: EthereumAddress, tokenAddress: EthereumAddress, toAddress: EthereumAddress, account: EthereumAccountProtocol, amount: String, completion: @escaping (Result<String, Error>) -> Void) {
+        Task {
+            do {
+                let txHash = try await web3Repository.sendEth(walletAddress: walletAddress, tokenAddress: tokenAddress, toAddress: toAddress, account: account, amount: amount)
+
+                completion(.success(txHash))
+            } catch {
+                completion(.failure("\(error)"))
+            }
+        }
+    }
+
+    func fetchTransactionReceipt(for txHash: String, completion: @escaping (Result<EthereumTransactionReceipt, Error>) -> Void) {
+        Task {
+            do {
+                let receipt = try await web3Repository.fetchTransactionReceipt(for: txHash)
+
+                completion(.success(receipt))
+            } catch {
+                completion(.failure("\(error)"))
+            }
+        }
     }
 }

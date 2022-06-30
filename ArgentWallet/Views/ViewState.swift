@@ -9,6 +9,6 @@ import Foundation
 
 enum ViewState {
     case idle
-    case loading
+    case loading(String)
     case failed(String)
 }

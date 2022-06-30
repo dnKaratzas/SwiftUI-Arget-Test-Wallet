@@ -7,14 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BC608DFF286CB37A006035AC /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC608DFE286CB37A006035AC /* PullToRefreshView.swift */; };
+		BC1732D0286CF4AA000158D1 /* Task++.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1732CF286CF4AA000158D1 /* Task++.swift */; };
+		BC1BFA0A286D962000D26A22 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = BC1BFA09286D962000D26A22 /* OrderedCollections */; };
+		BC1BFA0C286D97E900D26A22 /* ActivityList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1BFA0B286D97E900D26A22 /* ActivityList.swift */; };
+		BC1BFA0F286DA33200D26A22 /* ERC20TransfersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1BFA0E286DA33200D26A22 /* ERC20TransfersView.swift */; };
+		BC1BFA11286DA6BC00D26A22 /* ERC20TransfersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1BFA10286DA6BC00D26A22 /* ERC20TransfersViewModel.swift */; };
 		BC608E02286CB3E1006035AC /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC608E01286CB3E1006035AC /* MainViewModel.swift */; };
 		BC608E04286CB899006035AC /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC608E03286CB899006035AC /* ViewState.swift */; };
 		BC608E07286CC9B8006035AC /* SimpleToast in Frameworks */ = {isa = PBXBuildFile; productRef = BC608E06286CC9B8006035AC /* SimpleToast */; };
 		BC608E09286CCB75006035AC /* AsyncContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC608E08286CCB75006035AC /* AsyncContentView.swift */; };
-		BC608E0B286CCCD1006035AC /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC608E0A286CCCD1006035AC /* BackgroundView.swift */; };
 		BC608E0E286CCDE0006035AC /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC608E0D286CCDE0006035AC /* Assets.swift */; };
-		BC608E10286CCE07006035AC /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC608E0F286CCE07006035AC /* VisualEffectView.swift */; };
 		BC72F3B5286CB0A700C1CE47 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC72F3B4286CB0A700C1CE47 /* MainView.swift */; };
 		BCD41695286C8833001C3E93 /* ArgentWalletApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD41694286C8833001C3E93 /* ArgentWalletApp.swift */; };
 		BCD41699286C8834001C3E93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCD41698286C8834001C3E93 /* Assets.xcassets */; };
@@ -55,14 +57,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BC608DFE286CB37A006035AC /* PullToRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullToRefreshView.swift; sourceTree = "<group>"; };
+		BC1732CF286CF4AA000158D1 /* Task++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task++.swift"; sourceTree = "<group>"; };
+		BC1BFA0B286D97E900D26A22 /* ActivityList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityList.swift; sourceTree = "<group>"; };
+		BC1BFA0E286DA33200D26A22 /* ERC20TransfersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERC20TransfersView.swift; sourceTree = "<group>"; };
+		BC1BFA10286DA6BC00D26A22 /* ERC20TransfersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERC20TransfersViewModel.swift; sourceTree = "<group>"; };
 		BC608E01286CB3E1006035AC /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		BC608E03286CB899006035AC /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 		BC608E08286CCB75006035AC /* AsyncContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncContentView.swift; sourceTree = "<group>"; };
-		BC608E0A286CCCD1006035AC /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		BC608E0C286CCD76006035AC /* assets-template.stencil */ = {isa = PBXFileReference; lastKnownFileType = text; path = "assets-template.stencil"; sourceTree = "<group>"; };
 		BC608E0D286CCDE0006035AC /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
-		BC608E0F286CCE07006035AC /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 		BC72F3B4286CB0A700C1CE47 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		BCD41691286C8833001C3E93 /* ArgentWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArgentWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCD41694286C8833001C3E93 /* ArgentWalletApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArgentWalletApp.swift; sourceTree = "<group>"; };
@@ -91,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC1BFA0A286D962000D26A22 /* OrderedCollections in Frameworks */,
 				BC608E07286CC9B8006035AC /* SimpleToast in Frameworks */,
 				BCE62122286CB1E400CA3152 /* Resolver in Frameworks */,
 				BCD416C6286C88D8001C3E93 /* Logging in Frameworks */,
@@ -115,13 +119,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC1BFA0D286DA32000D26A22 /* ERC20TransfersView */ = {
+			isa = PBXGroup;
+			children = (
+				BC1BFA0E286DA33200D26A22 /* ERC20TransfersView.swift */,
+				BC1BFA10286DA6BC00D26A22 /* ERC20TransfersViewModel.swift */,
+			);
+			path = ERC20TransfersView;
+			sourceTree = "<group>";
+		};
 		BC608DFD286CB36F006035AC /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				BC608E08286CCB75006035AC /* AsyncContentView.swift */,
-				BC608E0A286CCCD1006035AC /* BackgroundView.swift */,
-				BC608DFE286CB37A006035AC /* PullToRefreshView.swift */,
-				BC608E0F286CCE07006035AC /* VisualEffectView.swift */,
+				BC1BFA0B286D97E900D26A22 /* ActivityList.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -225,6 +236,7 @@
 		BCD416D0286C89DC001C3E93 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BC1BFA0D286DA32000D26A22 /* ERC20TransfersView */,
 				BC608DFD286CB36F006035AC /* Components */,
 				BC608E00286CB3D3006035AC /* MainView */,
 				BC608E03286CB899006035AC /* ViewState.swift */,
@@ -282,6 +294,7 @@
 			children = (
 				BCD416E7286CA7C5001C3E93 /* Double++.swift */,
 				BCD416E5286CA585001C3E93 /* String++.swift */,
+				BC1732CF286CF4AA000158D1 /* Task++.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -309,6 +322,7 @@
 				BCD416C5286C88D8001C3E93 /* Logging */,
 				BCE62121286CB1E400CA3152 /* Resolver */,
 				BC608E06286CC9B8006035AC /* SimpleToast */,
+				BC1BFA09286D962000D26A22 /* OrderedCollections */,
 			);
 			productName = ArgentWallet;
 			productReference = BCD41691286C8833001C3E93 /* ArgentWallet.app */;
@@ -387,6 +401,7 @@
 				BCD416C4286C88D8001C3E93 /* XCRemoteSwiftPackageReference "swift-log" */,
 				BCE62120286CB1E400CA3152 /* XCRemoteSwiftPackageReference "Resolver" */,
 				BC608E05286CC9B8006035AC /* XCRemoteSwiftPackageReference "SimpleToast" */,
+				BC1BFA08286D962000D26A22 /* XCRemoteSwiftPackageReference "swift-collections" */,
 			);
 			productRefGroup = BCD41692286C8833001C3E93 /* Products */;
 			projectDirPath = "";
@@ -470,19 +485,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC1BFA0F286DA33200D26A22 /* ERC20TransfersView.swift in Sources */,
 				BCD416E6286CA585001C3E93 /* String++.swift in Sources */,
 				BCD416E0286C93F1001C3E93 /* L10n.swift in Sources */,
+				BC1BFA11286DA6BC00D26A22 /* ERC20TransfersViewModel.swift in Sources */,
 				BCD416DA286C91E2001C3E93 /* EtherscanRepository.swift in Sources */,
-				BC608DFF286CB37A006035AC /* PullToRefreshView.swift in Sources */,
 				BC608E09286CCB75006035AC /* AsyncContentView.swift in Sources */,
 				BCD416E3286CA26C001C3E93 /* Web3Utils.swift in Sources */,
+				BC1BFA0C286D97E900D26A22 /* ActivityList.swift in Sources */,
 				BC608E0E286CCDE0006035AC /* Assets.swift in Sources */,
 				BC608E02286CB3E1006035AC /* MainViewModel.swift in Sources */,
 				BCD416D5286C9196001C3E93 /* WalletService.swift in Sources */,
 				BCD416CF286C89B8001C3E93 /* App+Injection.swift in Sources */,
 				BC608E04286CB899006035AC /* ViewState.swift in Sources */,
-				BC608E10286CCE07006035AC /* VisualEffectView.swift in Sources */,
-				BC608E0B286CCCD1006035AC /* BackgroundView.swift in Sources */,
+				BC1732D0286CF4AA000158D1 /* Task++.swift in Sources */,
 				BCD416CC286C8990001C3E93 /* AppConstants.swift in Sources */,
 				BC72F3B5286CB0A700C1CE47 /* MainView.swift in Sources */,
 				BCD416E8286CA7C5001C3E93 /* Double++.swift in Sources */,
@@ -652,8 +668,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -664,7 +681,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -682,8 +699,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -694,7 +712,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -816,6 +834,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		BC1BFA08286D962000D26A22 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		BC608E05286CC9B8006035AC /* XCRemoteSwiftPackageReference "SimpleToast" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sanzaru/SimpleToast.git";
@@ -851,6 +877,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		BC1BFA09286D962000D26A22 /* OrderedCollections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BC1BFA08286D962000D26A22 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = OrderedCollections;
+		};
 		BC608E06286CC9B8006035AC /* SimpleToast */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BC608E05286CC9B8006035AC /* XCRemoteSwiftPackageReference "SimpleToast" */;

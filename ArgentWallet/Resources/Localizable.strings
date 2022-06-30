@@ -7,3 +7,13 @@
 */
 
 "generic_system_error" = "An unexpected error occured. Please try again.";
+"progress_view_loading" = "Loading...";
+"send_eth" = "Send 0.01 ETH";
+"view_erc_transactions" = "View ERC20 Trasfers";
+"wallet_balance" = "Wallet Balance";
+"activity" = "Activity";
+"confirmed" = "Confirmed";
+"failed" = "Failed";
+"pending" = "Pending";
+"recieve" = "Recieve";
+"send" = "Send";
