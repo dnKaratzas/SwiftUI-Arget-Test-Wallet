@@ -24,7 +24,7 @@
 
 import Foundation
 
-enum ViewState {
+enum ViewState: Equatable {
     case idle
     case loading(String)
     case failed(String)

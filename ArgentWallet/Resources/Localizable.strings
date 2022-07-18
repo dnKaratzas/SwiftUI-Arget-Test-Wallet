@@ -17,3 +17,6 @@
 "pending" = "Pending";
 "recieve" = "Recieve";
 "send" = "Send";
+"loading_balance" = "Fetching Balance...";
+"sending_eth" = "Sending 0.01 Eth...";
+"loading_erc20_transfers" = "Fetching ERC20 Transfers...";

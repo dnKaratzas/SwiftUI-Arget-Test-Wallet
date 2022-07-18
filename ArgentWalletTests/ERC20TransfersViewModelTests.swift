@@ -22,7 +22,40 @@
  SOFTWARE.
  */
 
+@testable import ArgentWallet
+import Combine
+import Resolver
 import XCTest
 
-class ArgentWalletUITests: XCTestCase {
+// swiftlint:disable implicitly_unwrapped_optional
+class ERC20TransfersViewModelTests: XCTestCase {
+    private var cancellables = Set<AnyCancellable>()
+    private var viewModel: ERC20TransfersViewModel!
+
+    override func setUp() {
+        super.setUp()
+        Resolver.registerMockServices()
+
+        viewModel = ERC20TransfersViewModel(walletService: Resolver.mock.resolve())
+    }
+
+    func testFetchTransfers() {
+        let expectation = XCTestExpectation(description: "fetchTransfersResult")
+        XCTAssertEqual(viewModel.state, .idle)
+
+        viewModel.$transfers
+            .dropFirst()
+            .sink { _ in
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
+
+        viewModel.fetchTransfers()
+        XCTAssertEqual(viewModel.state, .loading(L10n.loadingErc20Transfers))
+
+        wait(for: [expectation], timeout: 5)
+
+        XCTAssertEqual(viewModel.transfers.count, 9)
+    }
 }
+// swiftlint:enable implicitly_unwrapped_optional

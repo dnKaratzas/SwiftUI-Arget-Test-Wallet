@@ -28,11 +28,13 @@ import web3
 
 protocol WalletServiceProtocol {
     /// Returns the ETH balance, formatted to 2 decimals
-    func fetchBalance(for address: EthereumAddress, completion: @escaping (Result<String, Error>) -> Void)
+    func fetchBalance(for address: EthereumAddress) async -> Result<String, Error>
     /// Returns a list of all received ERC20 transfers for the Argent wallet.
-    func sendEth(walletAddress: EthereumAddress, tokenAddress: EthereumAddress, toAddress: EthereumAddress, account: EthereumAccountProtocol, amount: String, completion: @escaping (Result<String, Error>) -> Void)
+    func sendEth(walletAddress: EthereumAddress, tokenAddress: EthereumAddress, toAddress: EthereumAddress, account: EthereumAccountProtocol, amount: String) async -> Result<String, Error>
 
-    func fetchTransactionReceipt(for txHash: String, completion: @escaping (Result<EthereumTransactionReceipt, Error>) -> Void)
+    func fetchTransactionReceipt(for txHash: String) async -> Result<EthereumTransactionReceipt, Error>
+
+    func fetchERC20Transfers() async -> Result<[ERC20Transfer], Error>
 }
 
 struct WalletService: WalletServiceProtocol {
@@ -44,44 +46,49 @@ struct WalletService: WalletServiceProtocol {
         self.etherscanRepository = etherscanRepository
     }
 
-    func fetchBalance(for address: EthereumAddress, completion: @escaping (Result<String, Error>) -> Void) {
-        Task {
-            do {
-                let balance = try await web3Repository.fetchBalance(for: address)
+    func fetchBalance(for address: EthereumAddress) async -> Result<String, Error> {
+        do {
+            let balance = try await web3Repository.fetchBalance(for: address)
 
-                guard let balanceStr = Web3.Utils.formatToEthereumUnits(balance, toUnits: .eth),
-                      let balanceDouble = Double(balanceStr)?.rounded(2) else {
-                    completion(.failure("Failed to formatToEthereumUnits balance: \(balance)"))
-                    return
-                }
-                completion(.success(String(balanceDouble)))
-            } catch {
-                completion(.failure("\(error)"))
+            guard let balanceStr = Web3.Utils.formatToEthereumUnits(balance, toUnits: .eth),
+                  let balanceDouble = Double(balanceStr)?.rounded(2) else {
+                return .failure("Failed to formatToEthereumUnits balance: \(balance)")
             }
+            return .success(String(balanceDouble))
+        } catch {
+            return .failure("\(error)")
         }
     }
 
-    func sendEth(walletAddress: EthereumAddress, tokenAddress: EthereumAddress, toAddress: EthereumAddress, account: EthereumAccountProtocol, amount: String, completion: @escaping (Result<String, Error>) -> Void) {
-        Task {
-            do {
-                let txHash = try await web3Repository.sendEth(walletAddress: walletAddress, tokenAddress: tokenAddress, toAddress: toAddress, account: account, amount: amount)
+    func sendEth(walletAddress: EthereumAddress, tokenAddress: EthereumAddress, toAddress: EthereumAddress, account: EthereumAccountProtocol, amount: String) async -> Result<String, Error> {
+        do {
+            let txHash = try await web3Repository.sendEth(walletAddress: walletAddress, tokenAddress: tokenAddress, toAddress: toAddress, account: account, amount: amount)
 
-                completion(.success(txHash))
-            } catch {
-                completion(.failure("\(error)"))
-            }
+            return .success(txHash)
+        } catch {
+            return .failure("\(error)")
         }
     }
 
-    func fetchTransactionReceipt(for txHash: String, completion: @escaping (Result<EthereumTransactionReceipt, Error>) -> Void) {
-        Task {
-            do {
-                let receipt = try await web3Repository.fetchTransactionReceipt(for: txHash)
-
-                completion(.success(receipt))
-            } catch {
-                completion(.failure("\(error)"))
+    func fetchTransactionReceipt(for txHash: String) async -> Result<EthereumTransactionReceipt, Error> {
+        do {
+            guard let receipt = try await web3Repository.fetchTransactionReceipt(for: txHash) else {
+                throw "Failed to fetch receipt for tx: \(txHash)"
             }
+
+            return .success(receipt)
+        } catch {
+            return .failure("\(error)")
+        }
+    }
+
+    func fetchERC20Transfers() async -> Result<[ERC20Transfer], Error> {
+        do {
+            let result = try await etherscanRepository.fetchERC20Transfers()
+
+            return .success(result.transfers)
+        } catch {
+            return .failure("\(error)")
         }
     }
 }

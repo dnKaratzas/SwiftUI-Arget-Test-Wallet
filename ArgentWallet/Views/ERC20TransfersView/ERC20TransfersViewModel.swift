@@ -23,3 +23,30 @@
  */
 
 import Foundation
+import Resolver
+
+class ERC20TransfersViewModel: ObservableObject {
+    private var walletService: WalletServiceProtocol
+    @Published var state: ViewState = .idle
+    @Published var transfers: [ERC20Transfer] = []
+
+    init(walletService: WalletServiceProtocol) {
+        self.walletService = walletService
+    }
+
+    func fetchTransfers() async {
+        state = .loading(L10n.loadingErc20Transfers)
+        let result = await walletService.fetchERC20Transfers()
+
+        await MainActor.run {
+            switch result {
+            case .success(let transfers):
+                self.transfers = transfers.filter { $0.to.lowercased() == AppConstants.walletAddress.value.lowercased() }
+                self.state = .idle
+            case .failure(let error):
+                logger.warning("\(error)")
+                self.state = .failed(L10n.genericSystemError)
+            }
+        }
+    }
+}

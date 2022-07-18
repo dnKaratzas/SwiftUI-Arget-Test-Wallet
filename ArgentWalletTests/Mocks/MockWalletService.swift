@@ -22,22 +22,30 @@
  SOFTWARE.
  */
 
+@testable import ArgentWallet
 import Foundation
-import Resolver
 import web3
 
-// swiftlint:disable force_try
+class MockWalletService: WalletServiceProtocol {
+    func fetchBalance(for address: EthereumAddress, completion: @escaping (Result<String, Error>) -> Void) {
+        completion(.success("12.5"))
+    }
 
-extension Resolver: ResolverRegistering {
-    public static func registerAllServices() {
-        defaultScope = .graph
+    func sendEth(walletAddress: EthereumAddress, tokenAddress: EthereumAddress, toAddress: EthereumAddress, account: EthereumAccountProtocol, amount: String, completion: @escaping (Result<String, Error>) -> Void) {
+        completion(.success("txHash"))
+    }
 
-        register { URLSessionConfiguration.default }
-        register { EthereumClient(url: AppConstants.infuraURL, sessionConfig: resolve()) }.implements(EthereumClientProtocol.self)
-        register { try! EthereumAccount.importAccount(keyStorage: EthereumKeyLocalStorage(), privateKey: AppConstants.walletPrivateKey, keystorePassword: AppConstants.keystorePassword) }.implements(EthereumAccountProtocol.self)
-        register { WalletService(web3Repository: Web3Repository(), etherscanRepository: EtherscanRepository()) }.implements(WalletServiceProtocol.self)
-        register { MainViewModel(ethAccount: Resolver.resolve(), walletService: Resolver.resolve()) }
-        register { ERC20TransfersViewModel(walletService: Resolver.resolve()) }
+    func fetchTransactionReceipt(for txHash: String, completion: @escaping (Result<EthereumTransactionReceipt, Error>) -> Void) {
+    }
+
+    func fetchERC20Transfers(completion: @escaping (Result<[ERC20Transfer], Error>) -> Void) {
+        let jsonData = Bundle.stubbedDataFromJson(filename: "ERC20Transfers")
+        let decoder = JSONDecoder()
+        do {
+            let result = try decoder.decode(ERC20Transfers.self, from: jsonData)
+            completion(.success(result.transfers))
+        } catch {
+            completion(.failure("ERC20Transfers.json decode failed \(error)"))
+        }
     }
 }
-// swiftlint:enable force_try

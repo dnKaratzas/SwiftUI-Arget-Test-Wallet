@@ -12,18 +12,23 @@
 		BC1BFA0C286D97E900D26A22 /* ActivityList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1BFA0B286D97E900D26A22 /* ActivityList.swift */; };
 		BC1BFA0F286DA33200D26A22 /* ERC20TransfersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1BFA0E286DA33200D26A22 /* ERC20TransfersView.swift */; };
 		BC1BFA11286DA6BC00D26A22 /* ERC20TransfersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1BFA10286DA6BC00D26A22 /* ERC20TransfersViewModel.swift */; };
+		BC1BFA14286DAA2D00D26A22 /* ERC20Transfers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1BFA13286DAA2D00D26A22 /* ERC20Transfers.swift */; };
+		BC1BFA16286DAC7700D26A22 /* URL++.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1BFA15286DAC7700D26A22 /* URL++.swift */; };
 		BC608E02286CB3E1006035AC /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC608E01286CB3E1006035AC /* MainViewModel.swift */; };
 		BC608E04286CB899006035AC /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC608E03286CB899006035AC /* ViewState.swift */; };
 		BC608E07286CC9B8006035AC /* SimpleToast in Frameworks */ = {isa = PBXBuildFile; productRef = BC608E06286CC9B8006035AC /* SimpleToast */; };
 		BC608E09286CCB75006035AC /* AsyncContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC608E08286CCB75006035AC /* AsyncContentView.swift */; };
 		BC608E0E286CCDE0006035AC /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC608E0D286CCDE0006035AC /* Assets.swift */; };
 		BC72F3B5286CB0A700C1CE47 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC72F3B4286CB0A700C1CE47 /* MainView.swift */; };
+		BC835074286DC7B90078E0C5 /* MockWalletService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC835073286DC7B90078E0C5 /* MockWalletService.swift */; };
+		BC835079286DD27A0078E0C5 /* ERC20TransfersViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC835078286DD27A0078E0C5 /* ERC20TransfersViewModelTests.swift */; };
+		BC83507C286DD2F40078E0C5 /* Resolver+XCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC83507B286DD2F40078E0C5 /* Resolver+XCTest.swift */; };
+		BC83507F286DD3F60078E0C5 /* ERC20Transfers.json in Resources */ = {isa = PBXBuildFile; fileRef = BC83507E286DD3F60078E0C5 /* ERC20Transfers.json */; };
+		BC835082286DD43A0078E0C5 /* Bundle++.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC835081286DD43A0078E0C5 /* Bundle++.swift */; };
 		BCD41695286C8833001C3E93 /* ArgentWalletApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD41694286C8833001C3E93 /* ArgentWalletApp.swift */; };
 		BCD41699286C8834001C3E93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCD41698286C8834001C3E93 /* Assets.xcassets */; };
 		BCD4169C286C8834001C3E93 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCD4169B286C8834001C3E93 /* Preview Assets.xcassets */; };
-		BCD416A6286C8834001C3E93 /* ArgentWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD416A5286C8834001C3E93 /* ArgentWalletTests.swift */; };
-		BCD416B0286C8834001C3E93 /* ArgentWalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD416AF286C8834001C3E93 /* ArgentWalletUITests.swift */; };
-		BCD416B2286C8834001C3E93 /* ArgentWalletUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD416B1286C8834001C3E93 /* ArgentWalletUITestsLaunchTests.swift */; };
+		BCD416A6286C8834001C3E93 /* MainViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD416A5286C8834001C3E93 /* MainViewModelTests.swift */; };
 		BCD416C3286C88C7001C3E93 /* web3.swift in Frameworks */ = {isa = PBXBuildFile; productRef = BCD416C2286C88C7001C3E93 /* web3.swift */; };
 		BCD416C6286C88D8001C3E93 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = BCD416C5286C88D8001C3E93 /* Logging */; };
 		BCD416CC286C8990001C3E93 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD416CB286C8990001C3E93 /* AppConstants.swift */; };
@@ -47,13 +52,6 @@
 			remoteGlobalIDString = BCD41690286C8833001C3E93;
 			remoteInfo = ArgentWallet;
 		};
-		BCD416AC286C8834001C3E93 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BCD41689286C8833001C3E93 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BCD41690286C8833001C3E93;
-			remoteInfo = ArgentWallet;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -61,21 +59,25 @@
 		BC1BFA0B286D97E900D26A22 /* ActivityList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityList.swift; sourceTree = "<group>"; };
 		BC1BFA0E286DA33200D26A22 /* ERC20TransfersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERC20TransfersView.swift; sourceTree = "<group>"; };
 		BC1BFA10286DA6BC00D26A22 /* ERC20TransfersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERC20TransfersViewModel.swift; sourceTree = "<group>"; };
+		BC1BFA13286DAA2D00D26A22 /* ERC20Transfers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERC20Transfers.swift; sourceTree = "<group>"; };
+		BC1BFA15286DAC7700D26A22 /* URL++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL++.swift"; sourceTree = "<group>"; };
 		BC608E01286CB3E1006035AC /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		BC608E03286CB899006035AC /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 		BC608E08286CCB75006035AC /* AsyncContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncContentView.swift; sourceTree = "<group>"; };
 		BC608E0C286CCD76006035AC /* assets-template.stencil */ = {isa = PBXFileReference; lastKnownFileType = text; path = "assets-template.stencil"; sourceTree = "<group>"; };
 		BC608E0D286CCDE0006035AC /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		BC72F3B4286CB0A700C1CE47 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		BC835073286DC7B90078E0C5 /* MockWalletService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWalletService.swift; sourceTree = "<group>"; };
+		BC835078286DD27A0078E0C5 /* ERC20TransfersViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERC20TransfersViewModelTests.swift; sourceTree = "<group>"; };
+		BC83507B286DD2F40078E0C5 /* Resolver+XCTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Resolver+XCTest.swift"; sourceTree = "<group>"; };
+		BC83507E286DD3F60078E0C5 /* ERC20Transfers.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ERC20Transfers.json; sourceTree = "<group>"; };
+		BC835081286DD43A0078E0C5 /* Bundle++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle++.swift"; sourceTree = "<group>"; };
 		BCD41691286C8833001C3E93 /* ArgentWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArgentWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCD41694286C8833001C3E93 /* ArgentWalletApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArgentWalletApp.swift; sourceTree = "<group>"; };
 		BCD41698286C8834001C3E93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BCD4169B286C8834001C3E93 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BCD416A1286C8834001C3E93 /* ArgentWalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArgentWalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BCD416A5286C8834001C3E93 /* ArgentWalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArgentWalletTests.swift; sourceTree = "<group>"; };
-		BCD416AB286C8834001C3E93 /* ArgentWalletUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArgentWalletUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BCD416AF286C8834001C3E93 /* ArgentWalletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArgentWalletUITests.swift; sourceTree = "<group>"; };
-		BCD416B1286C8834001C3E93 /* ArgentWalletUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArgentWalletUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BCD416A5286C8834001C3E93 /* MainViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelTests.swift; sourceTree = "<group>"; };
 		BCD416C8286C8904001C3E93 /* swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftlint.yml; sourceTree = "<group>"; };
 		BCD416CB286C8990001C3E93 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		BCD416CE286C89B8001C3E93 /* App+Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App+Injection.swift"; sourceTree = "<group>"; };
@@ -109,13 +111,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BCD416A8286C8834001C3E93 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -126,6 +121,14 @@
 				BC1BFA10286DA6BC00D26A22 /* ERC20TransfersViewModel.swift */,
 			);
 			path = ERC20TransfersView;
+			sourceTree = "<group>";
+		};
+		BC1BFA12286DAA1C00D26A22 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BC1BFA13286DAA2D00D26A22 /* ERC20Transfers.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		BC608DFD286CB36F006035AC /* Components */ = {
@@ -146,13 +149,44 @@
 			path = MainView;
 			sourceTree = "<group>";
 		};
+		BC835072286DC7A90078E0C5 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				BC835073286DC7B90078E0C5 /* MockWalletService.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		BC83507A286DD2E70078E0C5 /* Resolver */ = {
+			isa = PBXGroup;
+			children = (
+				BC83507B286DD2F40078E0C5 /* Resolver+XCTest.swift */,
+			);
+			path = Resolver;
+			sourceTree = "<group>";
+		};
+		BC83507D286DD3E10078E0C5 /* StubData */ = {
+			isa = PBXGroup;
+			children = (
+				BC83507E286DD3F60078E0C5 /* ERC20Transfers.json */,
+			);
+			path = StubData;
+			sourceTree = "<group>";
+		};
+		BC835080286DD4160078E0C5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BC835081286DD43A0078E0C5 /* Bundle++.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		BCD41688286C8833001C3E93 = {
 			isa = PBXGroup;
 			children = (
 				BCD416C7286C88EB001C3E93 /* Configs */,
 				BCD41693286C8833001C3E93 /* ArgentWallet */,
 				BCD416A4286C8834001C3E93 /* ArgentWalletTests */,
-				BCD416AE286C8834001C3E93 /* ArgentWalletUITests */,
 				BCD41692286C8833001C3E93 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -162,7 +196,6 @@
 			children = (
 				BCD41691286C8833001C3E93 /* ArgentWallet.app */,
 				BCD416A1286C8834001C3E93 /* ArgentWalletTests.xctest */,
-				BCD416AB286C8834001C3E93 /* ArgentWalletUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -173,6 +206,7 @@
 				BCD416CA286C8983001C3E93 /* App */,
 				BCD416E4286CA576001C3E93 /* Extensions */,
 				BCD416CD286C89AC001C3E93 /* Injection */,
+				BC1BFA12286DAA1C00D26A22 /* Models */,
 				BCD4169A286C8834001C3E93 /* Preview Content */,
 				BCD416D1286C8E62001C3E93 /* Resources */,
 				BCD416D3286C9187001C3E93 /* Services */,
@@ -193,18 +227,14 @@
 		BCD416A4286C8834001C3E93 /* ArgentWalletTests */ = {
 			isa = PBXGroup;
 			children = (
-				BCD416A5286C8834001C3E93 /* ArgentWalletTests.swift */,
+				BC835078286DD27A0078E0C5 /* ERC20TransfersViewModelTests.swift */,
+				BCD416A5286C8834001C3E93 /* MainViewModelTests.swift */,
+				BC835080286DD4160078E0C5 /* Extensions */,
+				BC835072286DC7A90078E0C5 /* Mocks */,
+				BC83507A286DD2E70078E0C5 /* Resolver */,
+				BC83507D286DD3E10078E0C5 /* StubData */,
 			);
 			path = ArgentWalletTests;
-			sourceTree = "<group>";
-		};
-		BCD416AE286C8834001C3E93 /* ArgentWalletUITests */ = {
-			isa = PBXGroup;
-			children = (
-				BCD416AF286C8834001C3E93 /* ArgentWalletUITests.swift */,
-				BCD416B1286C8834001C3E93 /* ArgentWalletUITestsLaunchTests.swift */,
-			);
-			path = ArgentWalletUITests;
 			sourceTree = "<group>";
 		};
 		BCD416C7286C88EB001C3E93 /* Configs */ = {
@@ -295,6 +325,7 @@
 				BCD416E7286CA7C5001C3E93 /* Double++.swift */,
 				BCD416E5286CA585001C3E93 /* String++.swift */,
 				BC1732CF286CF4AA000158D1 /* Task++.swift */,
+				BC1BFA15286DAC7700D26A22 /* URL++.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -346,24 +377,6 @@
 			productReference = BCD416A1286C8834001C3E93 /* ArgentWalletTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		BCD416AA286C8834001C3E93 /* ArgentWalletUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BCD416BB286C8834001C3E93 /* Build configuration list for PBXNativeTarget "ArgentWalletUITests" */;
-			buildPhases = (
-				BCD416A7286C8834001C3E93 /* Sources */,
-				BCD416A8286C8834001C3E93 /* Frameworks */,
-				BCD416A9286C8834001C3E93 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BCD416AD286C8834001C3E93 /* PBXTargetDependency */,
-			);
-			name = ArgentWalletUITests;
-			productName = ArgentWalletUITests;
-			productReference = BCD416AB286C8834001C3E93 /* ArgentWalletUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -378,10 +391,6 @@
 						CreatedOnToolsVersion = 13.4.1;
 					};
 					BCD416A0286C8834001C3E93 = {
-						CreatedOnToolsVersion = 13.4.1;
-						TestTargetID = BCD41690286C8833001C3E93;
-					};
-					BCD416AA286C8834001C3E93 = {
 						CreatedOnToolsVersion = 13.4.1;
 						TestTargetID = BCD41690286C8833001C3E93;
 					};
@@ -409,7 +418,6 @@
 			targets = (
 				BCD41690286C8833001C3E93 /* ArgentWallet */,
 				BCD416A0286C8834001C3E93 /* ArgentWalletTests */,
-				BCD416AA286C8834001C3E93 /* ArgentWalletUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -429,13 +437,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BCD416A9286C8834001C3E93 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				BC83507F286DD3F60078E0C5 /* ERC20Transfers.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,6 +502,8 @@
 				BC608E04286CB899006035AC /* ViewState.swift in Sources */,
 				BC1732D0286CF4AA000158D1 /* Task++.swift in Sources */,
 				BCD416CC286C8990001C3E93 /* AppConstants.swift in Sources */,
+				BC1BFA14286DAA2D00D26A22 /* ERC20Transfers.swift in Sources */,
+				BC1BFA16286DAC7700D26A22 /* URL++.swift in Sources */,
 				BC72F3B5286CB0A700C1CE47 /* MainView.swift in Sources */,
 				BCD416E8286CA7C5001C3E93 /* Double++.swift in Sources */,
 				BCD416D8286C91AD001C3E93 /* Web3Repository.swift in Sources */,
@@ -511,16 +515,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCD416A6286C8834001C3E93 /* ArgentWalletTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BCD416A7286C8834001C3E93 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BCD416B2286C8834001C3E93 /* ArgentWalletUITestsLaunchTests.swift in Sources */,
-				BCD416B0286C8834001C3E93 /* ArgentWalletUITests.swift in Sources */,
+				BC83507C286DD2F40078E0C5 /* Resolver+XCTest.swift in Sources */,
+				BC835079286DD27A0078E0C5 /* ERC20TransfersViewModelTests.swift in Sources */,
+				BC835082286DD43A0078E0C5 /* Bundle++.swift in Sources */,
+				BC835074286DC7B90078E0C5 /* MockWalletService.swift in Sources */,
+				BCD416A6286C8834001C3E93 /* MainViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,11 +530,6 @@
 			isa = PBXTargetDependency;
 			target = BCD41690286C8833001C3E93 /* ArgentWallet */;
 			targetProxy = BCD416A2286C8834001C3E93 /* PBXContainerItemProxy */;
-		};
-		BCD416AD286C8834001C3E93 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BCD41690286C8833001C3E93 /* ArgentWallet */;
-			targetProxy = BCD416AC286C8834001C3E93 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -756,42 +750,6 @@
 			};
 			name = Release;
 		};
-		BCD416BC286C8834001C3E93 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z3235HPL98;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = eu.dkaratzas.ArgentWalletUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ArgentWallet;
-			};
-			name = Debug;
-		};
-		BCD416BD286C8834001C3E93 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z3235HPL98;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = eu.dkaratzas.ArgentWalletUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ArgentWallet;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -818,15 +776,6 @@
 			buildConfigurations = (
 				BCD416B9286C8834001C3E93 /* Debug */,
 				BCD416BA286C8834001C3E93 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BCD416BB286C8834001C3E93 /* Build configuration list for PBXNativeTarget "ArgentWalletUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BCD416BC286C8834001C3E93 /* Debug */,
-				BCD416BD286C8834001C3E93 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

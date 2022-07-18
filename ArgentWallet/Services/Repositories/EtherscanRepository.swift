@@ -23,6 +23,27 @@
  */
 
 import Foundation
+import Resolver
 
 struct EtherscanRepository {
+    @Injected private var sessionConfig: URLSessionConfiguration
+
+    func fetchERC20Transfers() async throws -> ERC20Transfers {
+        var url = AppConstants.etherscanApiUrl
+        url.appendQueryItem(name: "address", value: AppConstants.walletAddress.value)
+        url.appendQueryItem(name: "apikey", value: AppConstants.etherscanApiKey)
+        url.appendQueryItem(name: "module", value: "account")
+        url.appendQueryItem(name: "action", value: "tokentx")
+        url.appendQueryItem(name: "startblock", value: "0")
+
+        let urlRequest = URLRequest(url: url)
+        let (data, response) = try await URLSession(configuration: sessionConfig).data(for: urlRequest)
+
+        guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+            throw "Error while fetching data"
+        }
+
+        let decodedResult = try JSONDecoder().decode(ERC20Transfers.self, from: data)
+        return decodedResult
+    }
 }

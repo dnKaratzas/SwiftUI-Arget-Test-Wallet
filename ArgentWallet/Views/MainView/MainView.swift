@@ -41,12 +41,15 @@ struct MainView: View {
                         .padding()
 
                     Text(L10n.walletBalance)
+                        .accessibilityIdentifier(AppConstants.A11y.balanceLabel)
                     Text("\(viewModel.balance) ETH")
                         .font(.title)
 
                     VStack {
                         Button {
-                            viewModel.sendEthereum()
+                            Task {
+                                await viewModel.sendEthereum()
+                            }
                         } label: {
                             Label(L10n.sendEth, systemImage: "paperplane.circle.fill")
                                 .frame(maxWidth: .infinity)
@@ -68,14 +71,12 @@ struct MainView: View {
                     .padding(30)
 
                     ActivityList(activityList: $viewModel.activityList)
-
-                    Spacer()
                 }
                 .navigationBarHidden(true)
             }
         }
-        .onAppear {
-            viewModel.fetchAccountBalance()
+        .task(priority: .userInitiated) {
+            await viewModel.fetchAccountBalance()
         }
     }
 }

@@ -22,7 +22,21 @@
  SOFTWARE.
  */
 
-import XCTest
+@testable import ArgentWallet
+import Foundation
+import Resolver
 
-class ArgentWalletUITestsLaunchTests: XCTestCase {
+extension Resolver {
+    // MARK: - Mock Container
+    static var mock = Resolver(child: .main)
+
+    // MARK: - Register Mock Services
+    static func registerMockServices() {
+        root = Resolver.mock
+        defaultScope = .application
+
+        Resolver.mock.register { MockWalletService() }
+            .implements(WalletServiceProtocol.self)
+        Resolver.mock.register { MainViewModel(ethAccount: Resolver.mock.resolve(), walletService: Resolver.mock.resolve()) }
+    }
 }

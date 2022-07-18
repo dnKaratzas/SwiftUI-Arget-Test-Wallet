@@ -28,6 +28,7 @@ import web3
 // swiftlint:disable force_unwrapping
 enum AppConstants {
     static let infuraURL = URL(string: "https://ropsten.infura.io/v3/735489d9f846491faae7a31e1862d24b")!
+    static let etherscanApiUrl = URL(string: "https://api-ropsten.etherscan.io/api")!
     static let etherscanApiKey = "Your Etherscan API key"
     static let ethAddress = EthereumAddress("0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE")
     static let walletAddress = EthereumAddress("0x70ABd7F0c9Bdc109b579180B272525880Fb7E0cB")
@@ -39,6 +40,8 @@ enum AppConstants {
     static let toAddress = EthereumAddress("0x6271E14c57bFD683d348cceBeE9B22698dd40140")
 
     enum A11y {
+        static let balanceLabel = "balanceLabel"
+        static let loadingDialog = "loadingDialog"
     }
 }
 // swiftlint:enable force_unwrapping

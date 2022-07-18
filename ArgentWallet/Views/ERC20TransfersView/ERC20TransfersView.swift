@@ -22,11 +22,30 @@
  SOFTWARE.
  */
 
+import Resolver
 import SwiftUI
 
 struct ERC20TransfersView: View {
+    @StateObject private var viewModel: ERC20TransfersViewModel = Resolver.resolve()
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        AsyncContentView(state: $viewModel.state) {
+            List(viewModel.transfers, id: \.self) { transfer in
+                VStack(alignment: .leading) {
+                    Text("From: \(transfer.from)")
+                        .lineLimit(1)
+                        .truncationMode(.middle)
+                    Text("Token: \(transfer.contractAddress)")
+                        .lineLimit(1)
+                        .truncationMode(.middle)
+                    Text("Amount: \(transfer.amount) (\(transfer.tokenSymbol))")
+                }
+            }
+        }
+        .navigationTitle("ERC20 Transfers")
+        .navigationBarTitleDisplayMode(.inline)
+        .task(priority: .userInitiated) {
+            await viewModel.fetchTransfers()
+        }
     }
 }
 

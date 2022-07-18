@@ -28,52 +28,53 @@ import Resolver
 import web3
 
 class MainViewModel: ObservableObject {
-    @Injected private var ethAccount: EthereumAccountProtocol
-    @Injected private var walletService: WalletServiceProtocol
+    private var ethAccount: EthereumAccountProtocol
+    private var walletService: WalletServiceProtocol
     @Published var balance = "0.00"
     @Published var state: ViewState = .idle
     @Published var activityList: OrderedSet<ActivityListItemViewModel> = []
 
-    func fetchAccountBalance() {
-        state = .loading("Fetching Balance...")
+    init(ethAccount: EthereumAccountProtocol, walletService: WalletServiceProtocol) {
+        self.ethAccount = ethAccount
+        self.walletService = walletService
+    }
 
-        walletService.fetchBalance(for: ethAccount.address) { [weak self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let balance):
-                    self?.balance = balance
-                    self?.state = .idle
-                case .failure(let error):
-                    logger.warning("\(error)")
-                    self?.state = .failed(L10n.genericSystemError)
-                }
+    func fetchAccountBalance() async {
+        state = .loading(L10n.loadingBalance)
+        let result = await walletService.fetchBalance(for: self.ethAccount.address)
+        await MainActor.run {
+            switch result {
+            case .success(let balance):
+                self.balance = balance
+                self.state = .idle
+            case .failure(let error):
+                logger.warning("\(error)")
+                self.state = .failed(L10n.genericSystemError)
             }
         }
     }
 
-    func sendEthereum() {
-        state = .loading("Sending 0.01 Eth...")
-
-        walletService.sendEth(walletAddress: AppConstants.walletAddress, tokenAddress: AppConstants.ethAddress, toAddress: AppConstants.toAddress, account: ethAccount, amount: "0.01") { [weak self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let txHash):
-                    logger.trace("TxHash: \(txHash)")
-                    self?.state = .idle
-                    self?.fetchTransactionReceipt(for: txHash)
-                case .failure(let error):
-                    logger.warning("\(error)")
-                    self?.state = .failed("\(error)")
-                }
+    func sendEthereum() async {
+        state = .loading(L10n.sendingEth)
+        let result = await walletService.sendEth(walletAddress: AppConstants.walletAddress, tokenAddress: AppConstants.ethAddress, toAddress: AppConstants.toAddress, account: ethAccount, amount: "0.01")
+        await MainActor.run {
+            switch result {
+            case .success(let txHash):
+                logger.trace("TxHash: \(txHash)")
+                self.state = .idle
+                self.fetchTransactionReceipt(for: txHash)
+            case .failure(let error):
+                logger.warning("\(error)")
+                self.state = .failed("\(error)")
             }
         }
     }
 
     private func fetchTransactionReceipt(for txHash: String) {
         activityList.append(ActivityListItemViewModel(inbound: false, txHash: txHash, status: .notProcessed, amount: "0.01", time: dateNow()))
-
-        walletService.fetchTransactionReceipt(for: txHash) { [weak self] result in
-            DispatchQueue.main.async {
+        Task {
+            let result = await walletService.fetchTransactionReceipt(for: txHash)
+            await MainActor.run {
                 var status: EthereumTransactionReceiptStatus = .notProcessed
                 switch result {
                 case .success(let receipt):
@@ -83,8 +84,7 @@ class MainViewModel: ObservableObject {
                     logger.warning("\(error)")
                     status = .failure
                 }
-                self?.activityList.updateOrAppend(ActivityListItemViewModel(inbound: false, txHash: txHash, status: status, amount: "0.01", time: self?.dateNow() ?? ""))
-                print()
+                self.activityList.updateOrAppend(ActivityListItemViewModel(inbound: false, txHash: txHash, status: status, amount: "0.01", time: self.dateNow()))
             }
         }
     }

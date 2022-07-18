@@ -52,6 +52,17 @@ class ActivityListItemViewModel: Hashable {
         }
     }
 
+    var statusColor: Color {
+        switch status {
+        case .success:
+            return .green
+        case .failure:
+            return .red
+        case .notProcessed:
+            return .yellow
+        }
+    }
+
     init(inbound: Bool, txHash: String, status: EthereumTransactionReceiptStatus, amount: String, time: String) {
         self.inbound = inbound
         self.txHash = txHash
@@ -76,6 +87,7 @@ struct ActivityList: View {
                             Text(viewModel.inboundString)
                             Text("-")
                             Text(viewModel.statusString)
+                                .foregroundColor(viewModel.statusColor)
                             Spacer()
                             Text(viewModel.time)
                         }
@@ -90,9 +102,7 @@ struct ActivityList: View {
                 }
             }
         }
-        .onAppear {
-            UITableView.appearance().backgroundColor = .clear
-        }
+        .listStyle(InsetGroupedListStyle())
     }
 }
 //

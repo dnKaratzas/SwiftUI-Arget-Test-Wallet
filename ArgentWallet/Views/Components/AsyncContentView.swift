@@ -43,6 +43,7 @@ struct AsyncContentView<Content: View>: View {
                 LoadingView(isShowing: .constant(true), text: text) {
                     content
                 }
+                .accessibilityIdentifier(AppConstants.A11y.loadingDialog)
             case .failed(let error):
                 ZStack {
                     content

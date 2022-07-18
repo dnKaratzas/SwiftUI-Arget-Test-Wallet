@@ -18,6 +18,10 @@ internal enum L10n {
   internal static let failed = L10n.tr("Localizable", "failed")
   /// An unexpected error occured. Please try again.
   internal static let genericSystemError = L10n.tr("Localizable", "generic_system_error")
+  /// Fetching Balance...
+  internal static let loadingBalance = L10n.tr("Localizable", "loading_balance")
+  /// Fetching ERC20 Transfers...
+  internal static let loadingErc20Transfers = L10n.tr("Localizable", "loading_erc20_transfers")
   /// Pending
   internal static let pending = L10n.tr("Localizable", "pending")
   /// Loading...
@@ -28,6 +32,8 @@ internal enum L10n {
   internal static let send = L10n.tr("Localizable", "send")
   /// Send 0.01 ETH
   internal static let sendEth = L10n.tr("Localizable", "send_eth")
+  /// Sending 0.01 Eth...
+  internal static let sendingEth = L10n.tr("Localizable", "sending_eth")
   /// View ERC20 Trasfers
   internal static let viewErcTransactions = L10n.tr("Localizable", "view_erc_transactions")
   /// Wallet Balance

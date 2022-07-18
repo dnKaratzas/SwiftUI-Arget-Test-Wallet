@@ -55,7 +55,7 @@ struct Web3Repository {
         return txHash
     }
 
-    func fetchTransactionReceipt(for txHash: String) async throws -> EthereumTransactionReceipt {
+    func fetchTransactionReceipt(for txHash: String) async throws -> EthereumTransactionReceipt? {
         logger.trace("Fetching transaction receipt for txhash: \(txHash)")
         var receipt: EthereumTransactionReceipt?
         // TODO: add retry limit
@@ -72,7 +72,7 @@ struct Web3Repository {
             }
         }
 
-        return receipt!
+        return receipt
     }
 
     private struct TransferToken: ABIFunction {
